@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="39d48c21fe354ac1a4add92a4d607bdd" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="SolutionsModel.Answer" Width="1.5" PointX="6.375" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.AnswerComment" Width="1.5" PointX="8.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.AnswerRecomment" Width="1.5" PointX="10.625" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.Block" Width="1.5" PointX="4.375" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.Case" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.CaseComment" Width="1.5" PointX="7.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.CaseImage" Width="1.5" PointX="7.5" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.CaseRecomment" Width="1.5" PointX="9.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.Category" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.Feedback" Width="1.5" PointX="5.5" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.Follow" Width="1.5" PointX="5.25" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.Notification" Width="1.5" PointX="10.5" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.NotificationType" Width="1.5" PointX="8.25" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.Privacy" Width="1.5" PointX="1" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.SatisfactoryLevel" Width="1.5" PointX="1.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.User" Width="1.5" PointX="3.875" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.Vote" Width="1.5" PointX="6.625" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolutionsModel.VoteType" Width="1.5" PointX="3.75" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="SolutionsModel.FK_Answer_Case" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_AnswerComment_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_Vote_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_AnswerRecomment_AnswerComment" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_Block_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_Case_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_CaseComment_Case" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_CaseImage_Case" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_Category_Case" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_Notification_Case" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_CaseReComment_CaseComment" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_Feedback_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_Follow_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_Notification_NotificationType" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_Privacy_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_SatisfactoryLevel_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SolutionsModel.FK_Vote_VoteType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

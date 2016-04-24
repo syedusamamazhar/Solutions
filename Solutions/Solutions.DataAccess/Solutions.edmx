@@ -1,0 +1,1355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SolutionsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="AnswerCode" />
+          </Key>
+          <Property Name="AnswerCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CaseCode" Type="int" Nullable="false" />
+          <Property Name="AnswerUserCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnswerComment">
+          <Key>
+            <PropertyRef Name="AnswerCommentCode" />
+          </Key>
+          <Property Name="AnswerCommentCode" Type="int" Nullable="false" />
+          <Property Name="AnswerCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnswerRecomment">
+          <Key>
+            <PropertyRef Name="AnswerRecommentCode" />
+          </Key>
+          <Property Name="AnswerRecommentCode" Type="int" Nullable="false" />
+          <Property Name="AnswerCommentCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Block">
+          <Key>
+            <PropertyRef Name="BlockCode" />
+          </Key>
+          <Property Name="BlockCode" Type="int" Nullable="false" />
+          <Property Name="UserCode" Type="int" Nullable="false" />
+          <Property Name="BlockUserCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="CaseCode" />
+          </Key>
+          <Property Name="CaseCode" Type="int" Nullable="false" />
+          <Property Name="UserCode" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CategoryCode" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CaseComment">
+          <Key>
+            <PropertyRef Name="CaseCommentCode" />
+          </Key>
+          <Property Name="CaseCommentCode" Type="int" Nullable="false" />
+          <Property Name="CaseCode" Type="int" Nullable="false" />
+          <Property Name="CommentUserCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CaseImage">
+          <Key>
+            <PropertyRef Name="CaseImageCode" />
+          </Key>
+          <Property Name="CaseImageCode" Type="int" Nullable="false" />
+          <Property Name="CaseCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CaseRecomment">
+          <Key>
+            <PropertyRef Name="CaseRecommentCode" />
+          </Key>
+          <Property Name="CaseRecommentCode" Type="int" Nullable="false" />
+          <Property Name="CaseCommentCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryCode" />
+          </Key>
+          <Property Name="CategoryCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="FeedbackCode" />
+          </Key>
+          <Property Name="FeedbackCode" Type="int" Nullable="false" />
+          <Property Name="UserCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Follow">
+          <Key>
+            <PropertyRef Name="FollowCode" />
+          </Key>
+          <Property Name="FollowCode" Type="int" Nullable="false" />
+          <Property Name="UserCode" Type="int" Nullable="false" />
+          <Property Name="FollowUserCode" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationCode" />
+          </Key>
+          <Property Name="NotificationCode" Type="int" Nullable="false" />
+          <Property Name="NotificationTypeCode" Type="int" Nullable="false" />
+          <Property Name="CaseCode" Type="int" Nullable="false" />
+          <Property Name="NotificationUserCode" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationType">
+          <Key>
+            <PropertyRef Name="NotificationTypeCode" />
+          </Key>
+          <Property Name="NotificationTypeCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Privacy">
+          <Key>
+            <PropertyRef Name="PrivacyCode" />
+          </Key>
+          <Property Name="PrivacyCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SatisfactoryLevel">
+          <Key>
+            <PropertyRef Name="SatisfactoryLevelCode" />
+          </Key>
+          <Property Name="SatisfactoryLevelCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserCode" />
+          </Key>
+          <Property Name="UserCode" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SatisfactoryLevelCode" Type="int" Nullable="false" />
+          <Property Name="About" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrivacyCode" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="VoteCode" />
+          </Key>
+          <Property Name="VoteCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnswerCode" Type="int" Nullable="false" />
+          <Property Name="VoteUserCode" Type="int" Nullable="false" />
+          <Property Name="VoteTypeCode" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VoteType">
+          <Key>
+            <PropertyRef Name="VoteTypeCode" />
+          </Key>
+          <Property Name="VoteTypeCode" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Answer_Case">
+          <End Role="Case" Type="Self.Case" Multiplicity="1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseCode" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="CaseCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnswerComment_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="AnswerComment" Type="Self.AnswerComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="AnswerCode" />
+            </Principal>
+            <Dependent Role="AnswerComment">
+              <PropertyRef Name="AnswerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnswerRecomment_AnswerComment">
+          <End Role="AnswerComment" Type="Self.AnswerComment" Multiplicity="1" />
+          <End Role="AnswerRecomment" Type="Self.AnswerRecomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerComment">
+              <PropertyRef Name="AnswerCommentCode" />
+            </Principal>
+            <Dependent Role="AnswerRecomment">
+              <PropertyRef Name="AnswerCommentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Block_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Block" Type="Self.Block" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserCode" />
+            </Principal>
+            <Dependent Role="Block">
+              <PropertyRef Name="UserCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Case_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserCode" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="UserCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaseComment_Case">
+          <End Role="Case" Type="Self.Case" Multiplicity="1" />
+          <End Role="CaseComment" Type="Self.CaseComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseCode" />
+            </Principal>
+            <Dependent Role="CaseComment">
+              <PropertyRef Name="CaseCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaseImage_Case">
+          <End Role="Case" Type="Self.Case" Multiplicity="1" />
+          <End Role="CaseImage" Type="Self.CaseImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseCode" />
+            </Principal>
+            <Dependent Role="CaseImage">
+              <PropertyRef Name="CaseCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaseReComment_CaseComment">
+          <End Role="CaseComment" Type="Self.CaseComment" Multiplicity="1" />
+          <End Role="CaseRecomment" Type="Self.CaseRecomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CaseComment">
+              <PropertyRef Name="CaseCommentCode" />
+            </Principal>
+            <Dependent Role="CaseRecomment">
+              <PropertyRef Name="CaseCommentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Case">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryCode" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="CategoryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserCode" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="UserCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Follow_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Follow" Type="Self.Follow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserCode" />
+            </Principal>
+            <Dependent Role="Follow">
+              <PropertyRef Name="UserCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_Case">
+          <End Role="Case" Type="Self.Case" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseCode" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="CaseCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_NotificationType">
+          <End Role="NotificationType" Type="Self.NotificationType" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationType">
+              <PropertyRef Name="NotificationTypeCode" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="NotificationTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Privacy_User">
+          <End Role="Privacy" Type="Self.Privacy" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privacy">
+              <PropertyRef Name="PrivacyCode" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PrivacyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SatisfactoryLevel_User">
+          <End Role="SatisfactoryLevel" Type="Self.SatisfactoryLevel" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SatisfactoryLevel">
+              <PropertyRef Name="SatisfactoryLevelCode" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="SatisfactoryLevelCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vote_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Vote" Type="Self.Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="AnswerCode" />
+            </Principal>
+            <Dependent Role="Vote">
+              <PropertyRef Name="AnswerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vote_VoteType">
+          <End Role="VoteType" Type="Self.VoteType" Multiplicity="1" />
+          <End Role="Vote" Type="Self.Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoteType">
+              <PropertyRef Name="VoteTypeCode" />
+            </Principal>
+            <Dependent Role="Vote">
+              <PropertyRef Name="VoteTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SolutionsModelStoreContainer">
+          <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnswerComment" EntityType="Self.AnswerComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnswerRecomment" EntityType="Self.AnswerRecomment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Block" EntityType="Self.Block" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaseComment" EntityType="Self.CaseComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaseImage" EntityType="Self.CaseImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaseRecomment" EntityType="Self.CaseRecomment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Follow" EntityType="Self.Follow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationType" EntityType="Self.NotificationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privacy" EntityType="Self.Privacy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SatisfactoryLevel" EntityType="Self.SatisfactoryLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vote" EntityType="Self.Vote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoteType" EntityType="Self.VoteType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Answer_Case" Association="Self.FK_Answer_Case">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnswerComment_Answer" Association="Self.FK_AnswerComment_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="AnswerComment" EntitySet="AnswerComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnswerRecomment_AnswerComment" Association="Self.FK_AnswerRecomment_AnswerComment">
+            <End Role="AnswerComment" EntitySet="AnswerComment" />
+            <End Role="AnswerRecomment" EntitySet="AnswerRecomment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Block_User" Association="Self.FK_Block_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Block" EntitySet="Block" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Case_User" Association="Self.FK_Case_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Case" EntitySet="Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaseComment_Case" Association="Self.FK_CaseComment_Case">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="CaseComment" EntitySet="CaseComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaseImage_Case" Association="Self.FK_CaseImage_Case">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="CaseImage" EntitySet="CaseImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaseReComment_CaseComment" Association="Self.FK_CaseReComment_CaseComment">
+            <End Role="CaseComment" EntitySet="CaseComment" />
+            <End Role="CaseRecomment" EntitySet="CaseRecomment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Case" Association="Self.FK_Category_Case">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Case" EntitySet="Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_User" Association="Self.FK_Feedback_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Follow_User" Association="Self.FK_Follow_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Follow" EntitySet="Follow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_Case" Association="Self.FK_Notification_Case">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_NotificationType" Association="Self.FK_Notification_NotificationType">
+            <End Role="NotificationType" EntitySet="NotificationType" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Privacy_User" Association="Self.FK_Privacy_User">
+            <End Role="Privacy" EntitySet="Privacy" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SatisfactoryLevel_User" Association="Self.FK_SatisfactoryLevel_User">
+            <End Role="SatisfactoryLevel" EntitySet="SatisfactoryLevel" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vote_Answer" Association="Self.FK_Vote_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="Vote" EntitySet="Vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vote_VoteType" Association="Self.FK_Vote_VoteType">
+            <End Role="VoteType" EntitySet="VoteType" />
+            <End Role="Vote" EntitySet="Vote" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SolutionsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="AnswerCode" />
+          </Key>
+          <Property Name="AnswerCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CaseCode" Type="Int32" Nullable="false" />
+          <Property Name="AnswerUserCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Case" Relationship="Self.FK_Answer_Case" FromRole="Answer" ToRole="Case" />
+          <NavigationProperty Name="AnswerComment" Relationship="Self.FK_AnswerComment_Answer" FromRole="Answer" ToRole="AnswerComment" />
+          <NavigationProperty Name="Vote" Relationship="Self.FK_Vote_Answer" FromRole="Answer" ToRole="Vote" />
+        </EntityType>
+        <EntityType Name="AnswerComment">
+          <Key>
+            <PropertyRef Name="AnswerCommentCode" />
+          </Key>
+          <Property Name="AnswerCommentCode" Type="Int32" Nullable="false" />
+          <Property Name="AnswerCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_AnswerComment_Answer" FromRole="AnswerComment" ToRole="Answer" />
+          <NavigationProperty Name="AnswerRecomment" Relationship="Self.FK_AnswerRecomment_AnswerComment" FromRole="AnswerComment" ToRole="AnswerRecomment" />
+        </EntityType>
+        <EntityType Name="AnswerRecomment">
+          <Key>
+            <PropertyRef Name="AnswerRecommentCode" />
+          </Key>
+          <Property Name="AnswerRecommentCode" Type="Int32" Nullable="false" />
+          <Property Name="AnswerCommentCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AnswerComment" Relationship="Self.FK_AnswerRecomment_AnswerComment" FromRole="AnswerRecomment" ToRole="AnswerComment" />
+        </EntityType>
+        <EntityType Name="Block">
+          <Key>
+            <PropertyRef Name="BlockCode" />
+          </Key>
+          <Property Name="BlockCode" Type="Int32" Nullable="false" />
+          <Property Name="UserCode" Type="Int32" Nullable="false" />
+          <Property Name="BlockUserCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Block_User" FromRole="Block" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="CaseCode" />
+          </Key>
+          <Property Name="CaseCode" Type="Int32" Nullable="false" />
+          <Property Name="UserCode" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryCode" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Case" FromRole="Case" ToRole="Answer" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Case_User" FromRole="Case" ToRole="User" />
+          <NavigationProperty Name="CaseComment" Relationship="Self.FK_CaseComment_Case" FromRole="Case" ToRole="CaseComment" />
+          <NavigationProperty Name="CaseImage" Relationship="Self.FK_CaseImage_Case" FromRole="Case" ToRole="CaseImage" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Category_Case" FromRole="Case" ToRole="Category" />
+          <NavigationProperty Name="Notification" Relationship="Self.FK_Notification_Case" FromRole="Case" ToRole="Notification" />
+        </EntityType>
+        <EntityType Name="CaseComment">
+          <Key>
+            <PropertyRef Name="CaseCommentCode" />
+          </Key>
+          <Property Name="CaseCommentCode" Type="Int32" Nullable="false" />
+          <Property Name="CaseCode" Type="Int32" Nullable="false" />
+          <Property Name="CommentUserCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Case" Relationship="Self.FK_CaseComment_Case" FromRole="CaseComment" ToRole="Case" />
+          <NavigationProperty Name="CaseRecomment" Relationship="Self.FK_CaseReComment_CaseComment" FromRole="CaseComment" ToRole="CaseRecomment" />
+        </EntityType>
+        <EntityType Name="CaseImage">
+          <Key>
+            <PropertyRef Name="CaseImageCode" />
+          </Key>
+          <Property Name="CaseImageCode" Type="Int32" Nullable="false" />
+          <Property Name="CaseCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Case" Relationship="Self.FK_CaseImage_Case" FromRole="CaseImage" ToRole="Case" />
+        </EntityType>
+        <EntityType Name="CaseRecomment">
+          <Key>
+            <PropertyRef Name="CaseRecommentCode" />
+          </Key>
+          <Property Name="CaseRecommentCode" Type="Int32" Nullable="false" />
+          <Property Name="CaseCommentCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CaseComment" Relationship="Self.FK_CaseReComment_CaseComment" FromRole="CaseRecomment" ToRole="CaseComment" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryCode" />
+          </Key>
+          <Property Name="CategoryCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Case" Relationship="Self.FK_Category_Case" FromRole="Category" ToRole="Case" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="FeedbackCode" />
+          </Key>
+          <Property Name="FeedbackCode" Type="Int32" Nullable="false" />
+          <Property Name="UserCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Feedback_User" FromRole="Feedback" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Follow">
+          <Key>
+            <PropertyRef Name="FollowCode" />
+          </Key>
+          <Property Name="FollowCode" Type="Int32" Nullable="false" />
+          <Property Name="UserCode" Type="Int32" Nullable="false" />
+          <Property Name="FollowUserCode" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Follow_User" FromRole="Follow" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationCode" />
+          </Key>
+          <Property Name="NotificationCode" Type="Int32" Nullable="false" />
+          <Property Name="NotificationTypeCode" Type="Int32" Nullable="false" />
+          <Property Name="CaseCode" Type="Int32" Nullable="false" />
+          <Property Name="NotificationUserCode" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Case" Relationship="Self.FK_Notification_Case" FromRole="Notification" ToRole="Case" />
+          <NavigationProperty Name="NotificationType" Relationship="Self.FK_Notification_NotificationType" FromRole="Notification" ToRole="NotificationType" />
+        </EntityType>
+        <EntityType Name="NotificationType">
+          <Key>
+            <PropertyRef Name="NotificationTypeCode" />
+          </Key>
+          <Property Name="NotificationTypeCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Notification" Relationship="Self.FK_Notification_NotificationType" FromRole="NotificationType" ToRole="Notification" />
+        </EntityType>
+        <EntityType Name="Privacy">
+          <Key>
+            <PropertyRef Name="PrivacyCode" />
+          </Key>
+          <Property Name="PrivacyCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Privacy_User" FromRole="Privacy" ToRole="User" />
+        </EntityType>
+        <EntityType Name="SatisfactoryLevel">
+          <Key>
+            <PropertyRef Name="SatisfactoryLevelCode" />
+          </Key>
+          <Property Name="SatisfactoryLevelCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_SatisfactoryLevel_User" FromRole="SatisfactoryLevel" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserCode" />
+          </Key>
+          <Property Name="UserCode" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SatisfactoryLevelCode" Type="Int32" Nullable="false" />
+          <Property Name="About" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrivacyCode" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Block" Relationship="Self.FK_Block_User" FromRole="User" ToRole="Block" />
+          <NavigationProperty Name="Case" Relationship="Self.FK_Case_User" FromRole="User" ToRole="Case" />
+          <NavigationProperty Name="Feedback" Relationship="Self.FK_Feedback_User" FromRole="User" ToRole="Feedback" />
+          <NavigationProperty Name="Follow" Relationship="Self.FK_Follow_User" FromRole="User" ToRole="Follow" />
+          <NavigationProperty Name="Privacy" Relationship="Self.FK_Privacy_User" FromRole="User" ToRole="Privacy" />
+          <NavigationProperty Name="SatisfactoryLevel" Relationship="Self.FK_SatisfactoryLevel_User" FromRole="User" ToRole="SatisfactoryLevel" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="VoteCode" />
+          </Key>
+          <Property Name="VoteCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnswerCode" Type="Int32" Nullable="false" />
+          <Property Name="VoteUserCode" Type="Int32" Nullable="false" />
+          <Property Name="VoteTypeCode" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Vote_Answer" FromRole="Vote" ToRole="Answer" />
+          <NavigationProperty Name="VoteType" Relationship="Self.FK_Vote_VoteType" FromRole="Vote" ToRole="VoteType" />
+        </EntityType>
+        <EntityType Name="VoteType">
+          <Key>
+            <PropertyRef Name="VoteTypeCode" />
+          </Key>
+          <Property Name="VoteTypeCode" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="Vote" Relationship="Self.FK_Vote_VoteType" FromRole="VoteType" ToRole="Vote" />
+        </EntityType>
+        <Association Name="FK_Answer_Case">
+          <End Role="Case" Type="Self.Case" Multiplicity="1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseCode" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="CaseCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnswerComment_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="AnswerComment" Type="Self.AnswerComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="AnswerCode" />
+            </Principal>
+            <Dependent Role="AnswerComment">
+              <PropertyRef Name="AnswerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vote_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Vote" Type="Self.Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="AnswerCode" />
+            </Principal>
+            <Dependent Role="Vote">
+              <PropertyRef Name="AnswerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnswerRecomment_AnswerComment">
+          <End Role="AnswerComment" Type="Self.AnswerComment" Multiplicity="1" />
+          <End Role="AnswerRecomment" Type="Self.AnswerRecomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerComment">
+              <PropertyRef Name="AnswerCommentCode" />
+            </Principal>
+            <Dependent Role="AnswerRecomment">
+              <PropertyRef Name="AnswerCommentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Block_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Block" Type="Self.Block" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserCode" />
+            </Principal>
+            <Dependent Role="Block">
+              <PropertyRef Name="UserCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Case_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserCode" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="UserCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaseComment_Case">
+          <End Role="Case" Type="Self.Case" Multiplicity="1" />
+          <End Role="CaseComment" Type="Self.CaseComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseCode" />
+            </Principal>
+            <Dependent Role="CaseComment">
+              <PropertyRef Name="CaseCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaseImage_Case">
+          <End Role="Case" Type="Self.Case" Multiplicity="1" />
+          <End Role="CaseImage" Type="Self.CaseImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseCode" />
+            </Principal>
+            <Dependent Role="CaseImage">
+              <PropertyRef Name="CaseCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Case">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryCode" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="CategoryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_Case">
+          <End Role="Case" Type="Self.Case" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseCode" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="CaseCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaseReComment_CaseComment">
+          <End Role="CaseComment" Type="Self.CaseComment" Multiplicity="1" />
+          <End Role="CaseRecomment" Type="Self.CaseRecomment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CaseComment">
+              <PropertyRef Name="CaseCommentCode" />
+            </Principal>
+            <Dependent Role="CaseRecomment">
+              <PropertyRef Name="CaseCommentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserCode" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="UserCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Follow_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Follow" Type="Self.Follow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserCode" />
+            </Principal>
+            <Dependent Role="Follow">
+              <PropertyRef Name="UserCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_NotificationType">
+          <End Role="NotificationType" Type="Self.NotificationType" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationType">
+              <PropertyRef Name="NotificationTypeCode" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="NotificationTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Privacy_User">
+          <End Role="Privacy" Type="Self.Privacy" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privacy">
+              <PropertyRef Name="PrivacyCode" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PrivacyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SatisfactoryLevel_User">
+          <End Role="SatisfactoryLevel" Type="Self.SatisfactoryLevel" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SatisfactoryLevel">
+              <PropertyRef Name="SatisfactoryLevelCode" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="SatisfactoryLevelCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vote_VoteType">
+          <End Role="VoteType" Type="Self.VoteType" Multiplicity="1" />
+          <End Role="Vote" Type="Self.Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoteType">
+              <PropertyRef Name="VoteTypeCode" />
+            </Principal>
+            <Dependent Role="Vote">
+              <PropertyRef Name="VoteTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SolutionsEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Answer" EntityType="Self.Answer" />
+          <EntitySet Name="AnswerComment" EntityType="Self.AnswerComment" />
+          <EntitySet Name="AnswerRecomment" EntityType="Self.AnswerRecomment" />
+          <EntitySet Name="Block" EntityType="Self.Block" />
+          <EntitySet Name="Case" EntityType="Self.Case" />
+          <EntitySet Name="CaseComment" EntityType="Self.CaseComment" />
+          <EntitySet Name="CaseImage" EntityType="Self.CaseImage" />
+          <EntitySet Name="CaseRecomment" EntityType="Self.CaseRecomment" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" />
+          <EntitySet Name="Follow" EntityType="Self.Follow" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" />
+          <EntitySet Name="NotificationType" EntityType="Self.NotificationType" />
+          <EntitySet Name="Privacy" EntityType="Self.Privacy" />
+          <EntitySet Name="SatisfactoryLevel" EntityType="Self.SatisfactoryLevel" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Vote" EntityType="Self.Vote" />
+          <EntitySet Name="VoteType" EntityType="Self.VoteType" />
+          <AssociationSet Name="FK_Answer_Case" Association="Self.FK_Answer_Case">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnswerComment_Answer" Association="Self.FK_AnswerComment_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="AnswerComment" EntitySet="AnswerComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vote_Answer" Association="Self.FK_Vote_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="Vote" EntitySet="Vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnswerRecomment_AnswerComment" Association="Self.FK_AnswerRecomment_AnswerComment">
+            <End Role="AnswerComment" EntitySet="AnswerComment" />
+            <End Role="AnswerRecomment" EntitySet="AnswerRecomment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Block_User" Association="Self.FK_Block_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Block" EntitySet="Block" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Case_User" Association="Self.FK_Case_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Case" EntitySet="Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaseComment_Case" Association="Self.FK_CaseComment_Case">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="CaseComment" EntitySet="CaseComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaseImage_Case" Association="Self.FK_CaseImage_Case">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="CaseImage" EntitySet="CaseImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Case" Association="Self.FK_Category_Case">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Case" EntitySet="Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_Case" Association="Self.FK_Notification_Case">
+            <End Role="Case" EntitySet="Case" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaseReComment_CaseComment" Association="Self.FK_CaseReComment_CaseComment">
+            <End Role="CaseComment" EntitySet="CaseComment" />
+            <End Role="CaseRecomment" EntitySet="CaseRecomment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_User" Association="Self.FK_Feedback_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Follow_User" Association="Self.FK_Follow_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Follow" EntitySet="Follow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_NotificationType" Association="Self.FK_Notification_NotificationType">
+            <End Role="NotificationType" EntitySet="NotificationType" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Privacy_User" Association="Self.FK_Privacy_User">
+            <End Role="Privacy" EntitySet="Privacy" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SatisfactoryLevel_User" Association="Self.FK_SatisfactoryLevel_User">
+            <End Role="SatisfactoryLevel" EntitySet="SatisfactoryLevel" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vote_VoteType" Association="Self.FK_Vote_VoteType">
+            <End Role="VoteType" EntitySet="VoteType" />
+            <End Role="Vote" EntitySet="Vote" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SolutionsModelStoreContainer" CdmEntityContainer="SolutionsEntities3">
+          <EntitySetMapping Name="Answer">
+            <EntityTypeMapping TypeName="SolutionsModel.Answer">
+              <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="AnswerCode" ColumnName="AnswerCode" />
+                <ScalarProperty Name="CaseCode" ColumnName="CaseCode" />
+                <ScalarProperty Name="AnswerUserCode" ColumnName="AnswerUserCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnswerComment">
+            <EntityTypeMapping TypeName="SolutionsModel.AnswerComment">
+              <MappingFragment StoreEntitySet="AnswerComment">
+                <ScalarProperty Name="AnswerCommentCode" ColumnName="AnswerCommentCode" />
+                <ScalarProperty Name="AnswerCode" ColumnName="AnswerCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnswerRecomment">
+            <EntityTypeMapping TypeName="SolutionsModel.AnswerRecomment">
+              <MappingFragment StoreEntitySet="AnswerRecomment">
+                <ScalarProperty Name="AnswerRecommentCode" ColumnName="AnswerRecommentCode" />
+                <ScalarProperty Name="AnswerCommentCode" ColumnName="AnswerCommentCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Block">
+            <EntityTypeMapping TypeName="SolutionsModel.Block">
+              <MappingFragment StoreEntitySet="Block">
+                <ScalarProperty Name="BlockCode" ColumnName="BlockCode" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="BlockUserCode" ColumnName="BlockUserCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Case">
+            <EntityTypeMapping TypeName="SolutionsModel.Case">
+              <MappingFragment StoreEntitySet="Case">
+                <ScalarProperty Name="CaseCode" ColumnName="CaseCode" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseComment">
+            <EntityTypeMapping TypeName="SolutionsModel.CaseComment">
+              <MappingFragment StoreEntitySet="CaseComment">
+                <ScalarProperty Name="CaseCommentCode" ColumnName="CaseCommentCode" />
+                <ScalarProperty Name="CaseCode" ColumnName="CaseCode" />
+                <ScalarProperty Name="CommentUserCode" ColumnName="CommentUserCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseImage">
+            <EntityTypeMapping TypeName="SolutionsModel.CaseImage">
+              <MappingFragment StoreEntitySet="CaseImage">
+                <ScalarProperty Name="CaseImageCode" ColumnName="CaseImageCode" />
+                <ScalarProperty Name="CaseCode" ColumnName="CaseCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseRecomment">
+            <EntityTypeMapping TypeName="SolutionsModel.CaseRecomment">
+              <MappingFragment StoreEntitySet="CaseRecomment">
+                <ScalarProperty Name="CaseRecommentCode" ColumnName="CaseRecommentCode" />
+                <ScalarProperty Name="CaseCommentCode" ColumnName="CaseCommentCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="SolutionsModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedback">
+            <EntityTypeMapping TypeName="SolutionsModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="FeedbackCode" ColumnName="FeedbackCode" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Follow">
+            <EntityTypeMapping TypeName="SolutionsModel.Follow">
+              <MappingFragment StoreEntitySet="Follow">
+                <ScalarProperty Name="FollowCode" ColumnName="FollowCode" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="FollowUserCode" ColumnName="FollowUserCode" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notification">
+            <EntityTypeMapping TypeName="SolutionsModel.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="NotificationCode" ColumnName="NotificationCode" />
+                <ScalarProperty Name="NotificationTypeCode" ColumnName="NotificationTypeCode" />
+                <ScalarProperty Name="CaseCode" ColumnName="CaseCode" />
+                <ScalarProperty Name="NotificationUserCode" ColumnName="NotificationUserCode" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationType">
+            <EntityTypeMapping TypeName="SolutionsModel.NotificationType">
+              <MappingFragment StoreEntitySet="NotificationType">
+                <ScalarProperty Name="NotificationTypeCode" ColumnName="NotificationTypeCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privacy">
+            <EntityTypeMapping TypeName="SolutionsModel.Privacy">
+              <MappingFragment StoreEntitySet="Privacy">
+                <ScalarProperty Name="PrivacyCode" ColumnName="PrivacyCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SatisfactoryLevel">
+            <EntityTypeMapping TypeName="SolutionsModel.SatisfactoryLevel">
+              <MappingFragment StoreEntitySet="SatisfactoryLevel">
+                <ScalarProperty Name="SatisfactoryLevelCode" ColumnName="SatisfactoryLevelCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SolutionsModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="SolutionsModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="SatisfactoryLevelCode" ColumnName="SatisfactoryLevelCode" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="PrivacyCode" ColumnName="PrivacyCode" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vote">
+            <EntityTypeMapping TypeName="SolutionsModel.Vote">
+              <MappingFragment StoreEntitySet="Vote">
+                <ScalarProperty Name="VoteCode" ColumnName="VoteCode" />
+                <ScalarProperty Name="AnswerCode" ColumnName="AnswerCode" />
+                <ScalarProperty Name="VoteUserCode" ColumnName="VoteUserCode" />
+                <ScalarProperty Name="VoteTypeCode" ColumnName="VoteTypeCode" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoteType">
+            <EntityTypeMapping TypeName="SolutionsModel.VoteType">
+              <MappingFragment StoreEntitySet="VoteType">
+                <ScalarProperty Name="VoteTypeCode" ColumnName="VoteTypeCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

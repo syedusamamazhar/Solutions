@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD16154D-8502-41E6-9B33-BAD4CAE004A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Solutions.DataAccess</RootNamespace>
+    <AssemblyName>Solutions.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Answer.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerComment.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerRecomment.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Block.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Case.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CaseComment.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CaseImage.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CaseRecomment.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Feedback.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Follow.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationType.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Privacy.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="SatisfactoryLevel.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Solutions.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Solutions.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Solutions.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Solutions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Solutions.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vote.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VoteType.cs">
+      <DependentUpon>Solutions.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <EntityDeploy Include="Solutions.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Solutions.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Solutions.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Solutions.edmx</DependentUpon>
+      <LastGenOutput>Solutions.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Solutions.edmx.diagram">
+      <DependentUpon>Solutions.edmx</DependentUpon>
+    </None>
+    <None Include="Solutions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Solutions.edmx</DependentUpon>
+      <LastGenOutput>Solutions.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
