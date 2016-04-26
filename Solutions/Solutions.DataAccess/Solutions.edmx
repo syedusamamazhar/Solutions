@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SolutionsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Solutions.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Answer">
           <Key>
             <PropertyRef Name="AnswerCode" />
@@ -181,16 +181,6 @@
           </Key>
           <Property Name="SatisfactoryLevelCode" Type="int" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -434,7 +424,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SolutionsModelStoreContainer">
+        <EntityContainer Name="SolutionsStoreContainer">
           <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AnswerComment" EntityType="Self.AnswerComment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AnswerRecomment" EntityType="Self.AnswerRecomment" Schema="dbo" store:Type="Tables" />
@@ -450,7 +440,6 @@
           <EntitySet Name="NotificationType" EntityType="Self.NotificationType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Privacy" EntityType="Self.Privacy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SatisfactoryLevel" EntityType="Self.SatisfactoryLevel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vote" EntityType="Self.Vote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VoteType" EntityType="Self.VoteType" Schema="dbo" store:Type="Tables" />
@@ -526,7 +515,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SolutionsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Solutions" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Answer">
           <Key>
             <PropertyRef Name="AnswerCode" />
@@ -541,8 +530,8 @@
           <Property Name="UpdatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Case" Relationship="Self.FK_Answer_Case" FromRole="Answer" ToRole="Case" />
-          <NavigationProperty Name="AnswerComment" Relationship="Self.FK_AnswerComment_Answer" FromRole="Answer" ToRole="AnswerComment" />
-          <NavigationProperty Name="Vote" Relationship="Self.FK_Vote_Answer" FromRole="Answer" ToRole="Vote" />
+          <NavigationProperty Name="AnswerComments" Relationship="Self.FK_AnswerComment_Answer" FromRole="Answer" ToRole="AnswerComment" />
+          <NavigationProperty Name="Votes" Relationship="Self.FK_Vote_Answer" FromRole="Answer" ToRole="Vote" />
         </EntityType>
         <EntityType Name="AnswerComment">
           <Key>
@@ -557,7 +546,7 @@
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Answer" Relationship="Self.FK_AnswerComment_Answer" FromRole="AnswerComment" ToRole="Answer" />
-          <NavigationProperty Name="AnswerRecomment" Relationship="Self.FK_AnswerRecomment_AnswerComment" FromRole="AnswerComment" ToRole="AnswerRecomment" />
+          <NavigationProperty Name="AnswerRecomments" Relationship="Self.FK_AnswerRecomment_AnswerComment" FromRole="AnswerComment" ToRole="AnswerRecomment" />
         </EntityType>
         <EntityType Name="AnswerRecomment">
           <Key>
@@ -602,12 +591,12 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Case" FromRole="Case" ToRole="Answer" />
+          <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Case" FromRole="Case" ToRole="Answer" />
           <NavigationProperty Name="User" Relationship="Self.FK_Case_User" FromRole="Case" ToRole="User" />
-          <NavigationProperty Name="CaseComment" Relationship="Self.FK_CaseComment_Case" FromRole="Case" ToRole="CaseComment" />
-          <NavigationProperty Name="CaseImage" Relationship="Self.FK_CaseImage_Case" FromRole="Case" ToRole="CaseImage" />
+          <NavigationProperty Name="CaseComments" Relationship="Self.FK_CaseComment_Case" FromRole="Case" ToRole="CaseComment" />
+          <NavigationProperty Name="CaseImages" Relationship="Self.FK_CaseImage_Case" FromRole="Case" ToRole="CaseImage" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Category_Case" FromRole="Case" ToRole="Category" />
-          <NavigationProperty Name="Notification" Relationship="Self.FK_Notification_Case" FromRole="Case" ToRole="Notification" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notification_Case" FromRole="Case" ToRole="Notification" />
         </EntityType>
         <EntityType Name="CaseComment">
           <Key>
@@ -623,7 +612,7 @@
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Case" Relationship="Self.FK_CaseComment_Case" FromRole="CaseComment" ToRole="Case" />
-          <NavigationProperty Name="CaseRecomment" Relationship="Self.FK_CaseReComment_CaseComment" FromRole="CaseComment" ToRole="CaseRecomment" />
+          <NavigationProperty Name="CaseRecomments" Relationship="Self.FK_CaseReComment_CaseComment" FromRole="CaseComment" ToRole="CaseRecomment" />
         </EntityType>
         <EntityType Name="CaseImage">
           <Key>
@@ -659,7 +648,7 @@
           </Key>
           <Property Name="CategoryCode" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Case" Relationship="Self.FK_Category_Case" FromRole="Category" ToRole="Case" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Category_Case" FromRole="Category" ToRole="Case" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -711,7 +700,7 @@
           </Key>
           <Property Name="NotificationTypeCode" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Notification" Relationship="Self.FK_Notification_NotificationType" FromRole="NotificationType" ToRole="Notification" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notification_NotificationType" FromRole="NotificationType" ToRole="Notification" />
         </EntityType>
         <EntityType Name="Privacy">
           <Key>
@@ -719,7 +708,7 @@
           </Key>
           <Property Name="PrivacyCode" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Privacy_User" FromRole="Privacy" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Privacy_User" FromRole="Privacy" ToRole="User" />
         </EntityType>
         <EntityType Name="SatisfactoryLevel">
           <Key>
@@ -727,17 +716,7 @@
           </Key>
           <Property Name="SatisfactoryLevelCode" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_SatisfactoryLevel_User" FromRole="SatisfactoryLevel" ToRole="User" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_SatisfactoryLevel_User" FromRole="SatisfactoryLevel" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -755,10 +734,10 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Block" Relationship="Self.FK_Block_User" FromRole="User" ToRole="Block" />
-          <NavigationProperty Name="Case" Relationship="Self.FK_Case_User" FromRole="User" ToRole="Case" />
-          <NavigationProperty Name="Feedback" Relationship="Self.FK_Feedback_User" FromRole="User" ToRole="Feedback" />
-          <NavigationProperty Name="Follow" Relationship="Self.FK_Follow_User" FromRole="User" ToRole="Follow" />
+          <NavigationProperty Name="Blocks" Relationship="Self.FK_Block_User" FromRole="User" ToRole="Block" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Case_User" FromRole="User" ToRole="Case" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FK_Feedback_User" FromRole="User" ToRole="Feedback" />
+          <NavigationProperty Name="Follows" Relationship="Self.FK_Follow_User" FromRole="User" ToRole="Follow" />
           <NavigationProperty Name="Privacy" Relationship="Self.FK_Privacy_User" FromRole="User" ToRole="Privacy" />
           <NavigationProperty Name="SatisfactoryLevel" Relationship="Self.FK_SatisfactoryLevel_User" FromRole="User" ToRole="SatisfactoryLevel" />
         </EntityType>
@@ -784,7 +763,7 @@
           </Key>
           <Property Name="VoteTypeCode" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <NavigationProperty Name="Vote" Relationship="Self.FK_Vote_VoteType" FromRole="VoteType" ToRole="Vote" />
+          <NavigationProperty Name="Votes" Relationship="Self.FK_Vote_VoteType" FromRole="VoteType" ToRole="Vote" />
         </EntityType>
         <Association Name="FK_Answer_Case">
           <End Role="Case" Type="Self.Case" Multiplicity="1" />
@@ -990,93 +969,92 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SolutionsEntities3" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Answer" EntityType="Self.Answer" />
-          <EntitySet Name="AnswerComment" EntityType="Self.AnswerComment" />
-          <EntitySet Name="AnswerRecomment" EntityType="Self.AnswerRecomment" />
-          <EntitySet Name="Block" EntityType="Self.Block" />
-          <EntitySet Name="Case" EntityType="Self.Case" />
-          <EntitySet Name="CaseComment" EntityType="Self.CaseComment" />
-          <EntitySet Name="CaseImage" EntityType="Self.CaseImage" />
-          <EntitySet Name="CaseRecomment" EntityType="Self.CaseRecomment" />
-          <EntitySet Name="Category" EntityType="Self.Category" />
-          <EntitySet Name="Feedback" EntityType="Self.Feedback" />
-          <EntitySet Name="Follow" EntityType="Self.Follow" />
-          <EntitySet Name="Notification" EntityType="Self.Notification" />
-          <EntitySet Name="NotificationType" EntityType="Self.NotificationType" />
-          <EntitySet Name="Privacy" EntityType="Self.Privacy" />
-          <EntitySet Name="SatisfactoryLevel" EntityType="Self.SatisfactoryLevel" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="Vote" EntityType="Self.Vote" />
-          <EntitySet Name="VoteType" EntityType="Self.VoteType" />
+        <EntityContainer Name="SolutionsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Answers" EntityType="Self.Answer" />
+          <EntitySet Name="AnswerComments" EntityType="Self.AnswerComment" />
+          <EntitySet Name="AnswerRecomments" EntityType="Self.AnswerRecomment" />
+          <EntitySet Name="Blocks" EntityType="Self.Block" />
+          <EntitySet Name="Cases" EntityType="Self.Case" />
+          <EntitySet Name="CaseComments" EntityType="Self.CaseComment" />
+          <EntitySet Name="CaseImages" EntityType="Self.CaseImage" />
+          <EntitySet Name="CaseRecomments" EntityType="Self.CaseRecomment" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="Follows" EntityType="Self.Follow" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="NotificationTypes" EntityType="Self.NotificationType" />
+          <EntitySet Name="Privacies" EntityType="Self.Privacy" />
+          <EntitySet Name="SatisfactoryLevels" EntityType="Self.SatisfactoryLevel" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Votes" EntityType="Self.Vote" />
+          <EntitySet Name="VoteTypes" EntityType="Self.VoteType" />
           <AssociationSet Name="FK_Answer_Case" Association="Self.FK_Answer_Case">
-            <End Role="Case" EntitySet="Case" />
-            <End Role="Answer" EntitySet="Answer" />
+            <End Role="Case" EntitySet="Cases" />
+            <End Role="Answer" EntitySet="Answers" />
           </AssociationSet>
           <AssociationSet Name="FK_AnswerComment_Answer" Association="Self.FK_AnswerComment_Answer">
-            <End Role="Answer" EntitySet="Answer" />
-            <End Role="AnswerComment" EntitySet="AnswerComment" />
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="AnswerComment" EntitySet="AnswerComments" />
           </AssociationSet>
           <AssociationSet Name="FK_Vote_Answer" Association="Self.FK_Vote_Answer">
-            <End Role="Answer" EntitySet="Answer" />
-            <End Role="Vote" EntitySet="Vote" />
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="Vote" EntitySet="Votes" />
           </AssociationSet>
           <AssociationSet Name="FK_AnswerRecomment_AnswerComment" Association="Self.FK_AnswerRecomment_AnswerComment">
-            <End Role="AnswerComment" EntitySet="AnswerComment" />
-            <End Role="AnswerRecomment" EntitySet="AnswerRecomment" />
+            <End Role="AnswerComment" EntitySet="AnswerComments" />
+            <End Role="AnswerRecomment" EntitySet="AnswerRecomments" />
           </AssociationSet>
           <AssociationSet Name="FK_Block_User" Association="Self.FK_Block_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Block" EntitySet="Block" />
+            <End Role="User" EntitySet="Users" />
+            <End Role="Block" EntitySet="Blocks" />
           </AssociationSet>
           <AssociationSet Name="FK_Case_User" Association="Self.FK_Case_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Case" EntitySet="Case" />
+            <End Role="User" EntitySet="Users" />
+            <End Role="Case" EntitySet="Cases" />
           </AssociationSet>
           <AssociationSet Name="FK_CaseComment_Case" Association="Self.FK_CaseComment_Case">
-            <End Role="Case" EntitySet="Case" />
-            <End Role="CaseComment" EntitySet="CaseComment" />
+            <End Role="Case" EntitySet="Cases" />
+            <End Role="CaseComment" EntitySet="CaseComments" />
           </AssociationSet>
           <AssociationSet Name="FK_CaseImage_Case" Association="Self.FK_CaseImage_Case">
-            <End Role="Case" EntitySet="Case" />
-            <End Role="CaseImage" EntitySet="CaseImage" />
+            <End Role="Case" EntitySet="Cases" />
+            <End Role="CaseImage" EntitySet="CaseImages" />
           </AssociationSet>
           <AssociationSet Name="FK_Category_Case" Association="Self.FK_Category_Case">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Case" EntitySet="Case" />
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Case" EntitySet="Cases" />
           </AssociationSet>
           <AssociationSet Name="FK_Notification_Case" Association="Self.FK_Notification_Case">
-            <End Role="Case" EntitySet="Case" />
-            <End Role="Notification" EntitySet="Notification" />
+            <End Role="Case" EntitySet="Cases" />
+            <End Role="Notification" EntitySet="Notifications" />
           </AssociationSet>
           <AssociationSet Name="FK_CaseReComment_CaseComment" Association="Self.FK_CaseReComment_CaseComment">
-            <End Role="CaseComment" EntitySet="CaseComment" />
-            <End Role="CaseRecomment" EntitySet="CaseRecomment" />
+            <End Role="CaseComment" EntitySet="CaseComments" />
+            <End Role="CaseRecomment" EntitySet="CaseRecomments" />
           </AssociationSet>
           <AssociationSet Name="FK_Feedback_User" Association="Self.FK_Feedback_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Feedback" EntitySet="Feedback" />
+            <End Role="User" EntitySet="Users" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
           </AssociationSet>
           <AssociationSet Name="FK_Follow_User" Association="Self.FK_Follow_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Follow" EntitySet="Follow" />
+            <End Role="User" EntitySet="Users" />
+            <End Role="Follow" EntitySet="Follows" />
           </AssociationSet>
           <AssociationSet Name="FK_Notification_NotificationType" Association="Self.FK_Notification_NotificationType">
-            <End Role="NotificationType" EntitySet="NotificationType" />
-            <End Role="Notification" EntitySet="Notification" />
+            <End Role="NotificationType" EntitySet="NotificationTypes" />
+            <End Role="Notification" EntitySet="Notifications" />
           </AssociationSet>
           <AssociationSet Name="FK_Privacy_User" Association="Self.FK_Privacy_User">
-            <End Role="Privacy" EntitySet="Privacy" />
-            <End Role="User" EntitySet="User" />
+            <End Role="Privacy" EntitySet="Privacies" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_SatisfactoryLevel_User" Association="Self.FK_SatisfactoryLevel_User">
-            <End Role="SatisfactoryLevel" EntitySet="SatisfactoryLevel" />
-            <End Role="User" EntitySet="User" />
+            <End Role="SatisfactoryLevel" EntitySet="SatisfactoryLevels" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_Vote_VoteType" Association="Self.FK_Vote_VoteType">
-            <End Role="VoteType" EntitySet="VoteType" />
-            <End Role="Vote" EntitySet="Vote" />
+            <End Role="VoteType" EntitySet="VoteTypes" />
+            <End Role="Vote" EntitySet="Votes" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1084,9 +1062,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SolutionsModelStoreContainer" CdmEntityContainer="SolutionsEntities3">
-          <EntitySetMapping Name="Answer">
-            <EntityTypeMapping TypeName="SolutionsModel.Answer">
+        <EntityContainerMapping StorageEntityContainer="SolutionsStoreContainer" CdmEntityContainer="SolutionsEntities">
+          <EntitySetMapping Name="Answers">
+            <EntityTypeMapping TypeName="Solutions.Answer">
               <MappingFragment StoreEntitySet="Answer">
                 <ScalarProperty Name="AnswerCode" ColumnName="AnswerCode" />
                 <ScalarProperty Name="CaseCode" ColumnName="CaseCode" />
@@ -1100,8 +1078,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AnswerComment">
-            <EntityTypeMapping TypeName="SolutionsModel.AnswerComment">
+          <EntitySetMapping Name="AnswerComments">
+            <EntityTypeMapping TypeName="Solutions.AnswerComment">
               <MappingFragment StoreEntitySet="AnswerComment">
                 <ScalarProperty Name="AnswerCommentCode" ColumnName="AnswerCommentCode" />
                 <ScalarProperty Name="AnswerCode" ColumnName="AnswerCode" />
@@ -1114,8 +1092,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AnswerRecomment">
-            <EntityTypeMapping TypeName="SolutionsModel.AnswerRecomment">
+          <EntitySetMapping Name="AnswerRecomments">
+            <EntityTypeMapping TypeName="Solutions.AnswerRecomment">
               <MappingFragment StoreEntitySet="AnswerRecomment">
                 <ScalarProperty Name="AnswerRecommentCode" ColumnName="AnswerRecommentCode" />
                 <ScalarProperty Name="AnswerCommentCode" ColumnName="AnswerCommentCode" />
@@ -1128,8 +1106,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Block">
-            <EntityTypeMapping TypeName="SolutionsModel.Block">
+          <EntitySetMapping Name="Blocks">
+            <EntityTypeMapping TypeName="Solutions.Block">
               <MappingFragment StoreEntitySet="Block">
                 <ScalarProperty Name="BlockCode" ColumnName="BlockCode" />
                 <ScalarProperty Name="UserCode" ColumnName="UserCode" />
@@ -1143,8 +1121,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Case">
-            <EntityTypeMapping TypeName="SolutionsModel.Case">
+          <EntitySetMapping Name="Cases">
+            <EntityTypeMapping TypeName="Solutions.Case">
               <MappingFragment StoreEntitySet="Case">
                 <ScalarProperty Name="CaseCode" ColumnName="CaseCode" />
                 <ScalarProperty Name="UserCode" ColumnName="UserCode" />
@@ -1159,8 +1137,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CaseComment">
-            <EntityTypeMapping TypeName="SolutionsModel.CaseComment">
+          <EntitySetMapping Name="CaseComments">
+            <EntityTypeMapping TypeName="Solutions.CaseComment">
               <MappingFragment StoreEntitySet="CaseComment">
                 <ScalarProperty Name="CaseCommentCode" ColumnName="CaseCommentCode" />
                 <ScalarProperty Name="CaseCode" ColumnName="CaseCode" />
@@ -1174,8 +1152,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CaseImage">
-            <EntityTypeMapping TypeName="SolutionsModel.CaseImage">
+          <EntitySetMapping Name="CaseImages">
+            <EntityTypeMapping TypeName="Solutions.CaseImage">
               <MappingFragment StoreEntitySet="CaseImage">
                 <ScalarProperty Name="CaseImageCode" ColumnName="CaseImageCode" />
                 <ScalarProperty Name="CaseCode" ColumnName="CaseCode" />
@@ -1188,8 +1166,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CaseRecomment">
-            <EntityTypeMapping TypeName="SolutionsModel.CaseRecomment">
+          <EntitySetMapping Name="CaseRecomments">
+            <EntityTypeMapping TypeName="Solutions.CaseRecomment">
               <MappingFragment StoreEntitySet="CaseRecomment">
                 <ScalarProperty Name="CaseRecommentCode" ColumnName="CaseRecommentCode" />
                 <ScalarProperty Name="CaseCommentCode" ColumnName="CaseCommentCode" />
@@ -1202,16 +1180,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Category">
-            <EntityTypeMapping TypeName="SolutionsModel.Category">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="Solutions.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Feedback">
-            <EntityTypeMapping TypeName="SolutionsModel.Feedback">
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="Solutions.Feedback">
               <MappingFragment StoreEntitySet="Feedback">
                 <ScalarProperty Name="FeedbackCode" ColumnName="FeedbackCode" />
                 <ScalarProperty Name="UserCode" ColumnName="UserCode" />
@@ -1224,8 +1202,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Follow">
-            <EntityTypeMapping TypeName="SolutionsModel.Follow">
+          <EntitySetMapping Name="Follows">
+            <EntityTypeMapping TypeName="Solutions.Follow">
               <MappingFragment StoreEntitySet="Follow">
                 <ScalarProperty Name="FollowCode" ColumnName="FollowCode" />
                 <ScalarProperty Name="UserCode" ColumnName="UserCode" />
@@ -1238,8 +1216,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Notification">
-            <EntityTypeMapping TypeName="SolutionsModel.Notification">
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="Solutions.Notification">
               <MappingFragment StoreEntitySet="Notification">
                 <ScalarProperty Name="NotificationCode" ColumnName="NotificationCode" />
                 <ScalarProperty Name="NotificationTypeCode" ColumnName="NotificationTypeCode" />
@@ -1253,43 +1231,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NotificationType">
-            <EntityTypeMapping TypeName="SolutionsModel.NotificationType">
+          <EntitySetMapping Name="NotificationTypes">
+            <EntityTypeMapping TypeName="Solutions.NotificationType">
               <MappingFragment StoreEntitySet="NotificationType">
                 <ScalarProperty Name="NotificationTypeCode" ColumnName="NotificationTypeCode" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Privacy">
-            <EntityTypeMapping TypeName="SolutionsModel.Privacy">
+          <EntitySetMapping Name="Privacies">
+            <EntityTypeMapping TypeName="Solutions.Privacy">
               <MappingFragment StoreEntitySet="Privacy">
                 <ScalarProperty Name="PrivacyCode" ColumnName="PrivacyCode" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SatisfactoryLevel">
-            <EntityTypeMapping TypeName="SolutionsModel.SatisfactoryLevel">
+          <EntitySetMapping Name="SatisfactoryLevels">
+            <EntityTypeMapping TypeName="Solutions.SatisfactoryLevel">
               <MappingFragment StoreEntitySet="SatisfactoryLevel">
                 <ScalarProperty Name="SatisfactoryLevelCode" ColumnName="SatisfactoryLevelCode" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SolutionsModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="SolutionsModel.User">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Solutions.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="UserCode" ColumnName="UserCode" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1306,8 +1273,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vote">
-            <EntityTypeMapping TypeName="SolutionsModel.Vote">
+          <EntitySetMapping Name="Votes">
+            <EntityTypeMapping TypeName="Solutions.Vote">
               <MappingFragment StoreEntitySet="Vote">
                 <ScalarProperty Name="VoteCode" ColumnName="VoteCode" />
                 <ScalarProperty Name="AnswerCode" ColumnName="AnswerCode" />
@@ -1321,8 +1288,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VoteType">
-            <EntityTypeMapping TypeName="SolutionsModel.VoteType">
+          <EntitySetMapping Name="VoteTypes">
+            <EntityTypeMapping TypeName="Solutions.VoteType">
               <MappingFragment StoreEntitySet="VoteType">
                 <ScalarProperty Name="VoteTypeCode" ColumnName="VoteTypeCode" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1343,8 +1310,8 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

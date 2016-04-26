@@ -16,12 +16,12 @@ namespace Solutions.DataAccess
     {
         public SatisfactoryLevel()
         {
-            this.User = new HashSet<User>();
+            this.Users = new HashSet<User>();
         }
     
         public int SatisfactoryLevelCode { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<User> User { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

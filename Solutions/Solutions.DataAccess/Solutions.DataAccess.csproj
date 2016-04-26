@@ -109,9 +109,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Solutions.edmx</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Solutions.tt</DependentUpon>
-    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>Solutions.tt</DependentUpon>
     </Compile>

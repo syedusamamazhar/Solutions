@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Solutions.DataAccess;
-using Solutions.DataAccess.Repository;
 
-namespace Solutions.BusinessLogic
+namespace Solutions.Common
 {
-    class Account
+    public enum UserRoleType
     {
-        
+        Admin = 0,
+        User = 1
     }
+
+
 }

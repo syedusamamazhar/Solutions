@@ -16,12 +16,12 @@ namespace Solutions.DataAccess
     {
         public NotificationType()
         {
-            this.Notification = new HashSet<Notification>();
+            this.Notifications = new HashSet<Notification>();
         }
     
         public int NotificationTypeCode { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<Notification> Notification { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }

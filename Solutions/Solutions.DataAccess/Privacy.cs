@@ -16,12 +16,12 @@ namespace Solutions.DataAccess
     {
         public Privacy()
         {
-            this.User = new HashSet<User>();
+            this.Users = new HashSet<User>();
         }
     
         public int PrivacyCode { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<User> User { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

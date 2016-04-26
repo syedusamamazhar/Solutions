@@ -16,10 +16,10 @@ namespace Solutions.DataAccess
     {
         public Case()
         {
-            this.Answer = new HashSet<Answer>();
-            this.CaseComment = new HashSet<CaseComment>();
-            this.CaseImage = new HashSet<CaseImage>();
-            this.Notification = new HashSet<Notification>();
+            this.Answers = new HashSet<Answer>();
+            this.CaseComments = new HashSet<CaseComment>();
+            this.CaseImages = new HashSet<CaseImage>();
+            this.Notifications = new HashSet<Notification>();
         }
     
         public int CaseCode { get; set; }
@@ -33,11 +33,11 @@ namespace Solutions.DataAccess
         public System.DateTime UpdatedDate { get; set; }
         public bool IsDeleted { get; set; }
     
-        public virtual ICollection<Answer> Answer { get; set; }
+        public virtual ICollection<Answer> Answers { get; set; }
         public virtual User User { get; set; }
-        public virtual ICollection<CaseComment> CaseComment { get; set; }
-        public virtual ICollection<CaseImage> CaseImage { get; set; }
+        public virtual ICollection<CaseComment> CaseComments { get; set; }
+        public virtual ICollection<CaseImage> CaseImages { get; set; }
         public virtual Category Category { get; set; }
-        public virtual ICollection<Notification> Notification { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Solutions.DataAccess
     {
         public AnswerComment()
         {
-            this.AnswerRecomment = new HashSet<AnswerRecomment>();
+            this.AnswerRecomments = new HashSet<AnswerRecomment>();
         }
     
         public int AnswerCommentCode { get; set; }
@@ -29,6 +29,6 @@ namespace Solutions.DataAccess
         public bool IsDeleted { get; set; }
     
         public virtual Answer Answer { get; set; }
-        public virtual ICollection<AnswerRecomment> AnswerRecomment { get; set; }
+        public virtual ICollection<AnswerRecomment> AnswerRecomments { get; set; }
     }
 }

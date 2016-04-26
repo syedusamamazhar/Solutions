@@ -16,8 +16,8 @@ namespace Solutions.DataAccess
     {
         public Answer()
         {
-            this.AnswerComment = new HashSet<AnswerComment>();
-            this.Vote = new HashSet<Vote>();
+            this.AnswerComments = new HashSet<AnswerComment>();
+            this.Votes = new HashSet<Vote>();
         }
     
         public int AnswerCode { get; set; }
@@ -31,7 +31,7 @@ namespace Solutions.DataAccess
         public bool IsDeleted { get; set; }
     
         public virtual Case Case { get; set; }
-        public virtual ICollection<AnswerComment> AnswerComment { get; set; }
-        public virtual ICollection<Vote> Vote { get; set; }
+        public virtual ICollection<AnswerComment> AnswerComments { get; set; }
+        public virtual ICollection<Vote> Votes { get; set; }
     }
 }

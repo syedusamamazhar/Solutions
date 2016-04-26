@@ -13,10 +13,10 @@ namespace Solutions.DataAccess
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SolutionsEntities3 : DbContext
+    public partial class SolutionsEntities : DbContext
     {
-        public SolutionsEntities3()
-            : base("name=SolutionsEntities3")
+        public SolutionsEntities()
+            : base("name=SolutionsEntities")
         {
         }
     
@@ -25,24 +25,23 @@ namespace Solutions.DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Answer> Answer { get; set; }
-        public DbSet<AnswerComment> AnswerComment { get; set; }
-        public DbSet<AnswerRecomment> AnswerRecomment { get; set; }
-        public DbSet<Block> Block { get; set; }
-        public DbSet<Case> Case { get; set; }
-        public DbSet<CaseComment> CaseComment { get; set; }
-        public DbSet<CaseImage> CaseImage { get; set; }
-        public DbSet<CaseRecomment> CaseRecomment { get; set; }
-        public DbSet<Category> Category { get; set; }
-        public DbSet<Feedback> Feedback { get; set; }
-        public DbSet<Follow> Follow { get; set; }
-        public DbSet<Notification> Notification { get; set; }
-        public DbSet<NotificationType> NotificationType { get; set; }
-        public DbSet<Privacy> Privacy { get; set; }
-        public DbSet<SatisfactoryLevel> SatisfactoryLevel { get; set; }
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public DbSet<User> User { get; set; }
-        public DbSet<Vote> Vote { get; set; }
-        public DbSet<VoteType> VoteType { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<AnswerComment> AnswerComments { get; set; }
+        public DbSet<AnswerRecomment> AnswerRecomments { get; set; }
+        public DbSet<Block> Blocks { get; set; }
+        public DbSet<Case> Cases { get; set; }
+        public DbSet<CaseComment> CaseComments { get; set; }
+        public DbSet<CaseImage> CaseImages { get; set; }
+        public DbSet<CaseRecomment> CaseRecomments { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<Follow> Follows { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<NotificationType> NotificationTypes { get; set; }
+        public DbSet<Privacy> Privacies { get; set; }
+        public DbSet<SatisfactoryLevel> SatisfactoryLevels { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Vote> Votes { get; set; }
+        public DbSet<VoteType> VoteTypes { get; set; }
     }
 }

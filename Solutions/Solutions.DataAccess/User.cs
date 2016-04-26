@@ -16,10 +16,10 @@ namespace Solutions.DataAccess
     {
         public User()
         {
-            this.Block = new HashSet<Block>();
-            this.Case = new HashSet<Case>();
-            this.Feedback = new HashSet<Feedback>();
-            this.Follow = new HashSet<Follow>();
+            this.Blocks = new HashSet<Block>();
+            this.Cases = new HashSet<Case>();
+            this.Feedbacks = new HashSet<Feedback>();
+            this.Follows = new HashSet<Follow>();
         }
     
         public int UserCode { get; set; }
@@ -35,10 +35,10 @@ namespace Solutions.DataAccess
         public System.DateTime UpdatedDate { get; set; }
         public bool IsDeleted { get; set; }
     
-        public virtual ICollection<Block> Block { get; set; }
-        public virtual ICollection<Case> Case { get; set; }
-        public virtual ICollection<Feedback> Feedback { get; set; }
-        public virtual ICollection<Follow> Follow { get; set; }
+        public virtual ICollection<Block> Blocks { get; set; }
+        public virtual ICollection<Case> Cases { get; set; }
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
+        public virtual ICollection<Follow> Follows { get; set; }
         public virtual Privacy Privacy { get; set; }
         public virtual SatisfactoryLevel SatisfactoryLevel { get; set; }
     }

@@ -16,12 +16,12 @@ namespace Solutions.DataAccess
     {
         public VoteType()
         {
-            this.Vote = new HashSet<Vote>();
+            this.Votes = new HashSet<Vote>();
         }
     
         public int VoteTypeCode { get; set; }
         public byte[] Description { get; set; }
     
-        public virtual ICollection<Vote> Vote { get; set; }
+        public virtual ICollection<Vote> Votes { get; set; }
     }
 }

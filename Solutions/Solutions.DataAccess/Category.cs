@@ -16,12 +16,12 @@ namespace Solutions.DataAccess
     {
         public Category()
         {
-            this.Case = new HashSet<Case>();
+            this.Cases = new HashSet<Case>();
         }
     
         public int CategoryCode { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<Case> Case { get; set; }
+        public virtual ICollection<Case> Cases { get; set; }
     }
 }

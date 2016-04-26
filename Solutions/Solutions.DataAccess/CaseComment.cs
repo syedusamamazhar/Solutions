@@ -16,7 +16,7 @@ namespace Solutions.DataAccess
     {
         public CaseComment()
         {
-            this.CaseRecomment = new HashSet<CaseRecomment>();
+            this.CaseRecomments = new HashSet<CaseRecomment>();
         }
     
         public int CaseCommentCode { get; set; }
@@ -30,6 +30,6 @@ namespace Solutions.DataAccess
         public bool IsDeleted { get; set; }
     
         public virtual Case Case { get; set; }
-        public virtual ICollection<CaseRecomment> CaseRecomment { get; set; }
+        public virtual ICollection<CaseRecomment> CaseRecomments { get; set; }
     }
 }
