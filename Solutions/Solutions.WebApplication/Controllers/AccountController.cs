@@ -43,23 +43,63 @@ namespace Solutions.WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            //if (ModelState.IsValid)
+            //{
+            //    var user = await UserManager.FindAsync(model.UserName, model.Password);
+            //    if (user != null)
+            //    {
+            //        await SignInAsync(user, model.RememberMe);
+            //        return RedirectToLocal(returnUrl);
+            //    }
+            //    else
+            //    {
+            //        ModelState.AddModelError("", "Invalid username or password.");
+            //    }
+            //}
+
+            //// If we got this far, something failed, redisplay form
+            //return View(model);
+
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.UserName, model.Password);
+                Solutions.DataAccess.User user = Solutions.BusinessLogic.UserBL.GetUser(model.UserName);
+
                 if (user != null)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    if (model.Password == user.Password)
+                    {
+                        //model.RoleType = (UserRoleType)user.UserRoleCode;
+
+                        //SessionPersister.UserCode = user.UserCode;
+                        //SessionPersister.RoleCode = (int)model.RoleType;
+
+                        //switch(model.RoleType)
+                        //{
+                        //    case UserRoleType.Patient:
+                        //        return RedirectToAction("", "Patients");
+                        //    case UserRoleType.Doctor:
+                        //        return RedirectToAction("", "Doctors");
+                        //    case UserRoleType.Researcher:
+                        //        return RedirectToAction("", "Researcher");
+                        //}
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Credentials not correct. Make sure your caps lock is off.";
+                        return View(model);
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ViewBag.Message = "Username can not be found.";
+                    return View();
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
 
         //
         // GET: /Account/Register
@@ -309,15 +349,15 @@ namespace Solutions.WebApplication.Controllers
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && UserManager != null)
-            {
-                UserManager.Dispose();
-                UserManager = null;
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing && UserManager != null)
+        //    {
+        //        UserManager.Dispose();
+        //        UserManager = null;
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
         #region Helpers
         // Used for XSRF protection when adding external logins
@@ -378,7 +418,8 @@ namespace Solutions.WebApplication.Controllers
 
         private class ChallengeResult : HttpUnauthorizedResult
         {
-            public ChallengeResult(string provider, string redirectUri) : this(provider, redirectUri, null)
+            public ChallengeResult(string provider, string redirectUri)
+                : this(provider, redirectUri, null)
             {
             }
 
