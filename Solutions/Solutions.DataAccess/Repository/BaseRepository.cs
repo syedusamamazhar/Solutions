@@ -38,19 +38,19 @@ namespace Solutions.DataAccess.Repository
 
         public int Insert<T>(object entity) where T : class
         {
-            _context.Entry(entity).State = EntityState.Added;
+            _context.Entry(entity).State = System.Data.Entity.EntityState.Added;
             return _context.SaveChanges();
         }
 
         public int Update<T>(object entity) where T : class
         {
-            _context.Entry(entity).State = EntityState.Modified;
+            _context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             return _context.SaveChanges();
         }
 
         public int Delete<T>(object entity) where T : class
         {
-            _context.Entry(entity).State = EntityState.Deleted;
+            _context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
             return _context.SaveChanges();
         }
 
